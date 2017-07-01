@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="236841ad-fb0f-4fc3-a596-5090bcf50258" name="Default" comment="Spring">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/img/logos/citymobile.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/icons/product/one.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/img/logos/test.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/BillingController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/CustomerController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/HomeController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/ManagerController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/PaymentController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/RegisterController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/SecurityController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/dao/api/ServicePackageDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/dao/daoimpl/ServicePackageDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/service/ServicePackageService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/service/UserService.java" />
+    <list default="true" id="236841ad-fb0f-4fc3-a596-5090bcf50258" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JAVA3.iws" />
@@ -1052,7 +1038,7 @@
       <workItem from="1498849851008" duration="20826000" />
       <workItem from="1498910239298" duration="1192000" />
       <workItem from="1498917938977" duration="815000" />
-      <workItem from="1498918840395" duration="6008000" />
+      <workItem from="1498918840395" duration="6019000" />
     </task>
     <task id="LOCAL-00001" summary="Spring">
       <created>1498924623917</created>
@@ -1070,11 +1056,15 @@
       <created>1498924762546</created>
       <updated>1498924762546</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Spring">
+      <created>1498924871583</created>
+      <updated>1498924871583</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250918000" />
+    <option name="totallyTimeSpent" value="250929000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
