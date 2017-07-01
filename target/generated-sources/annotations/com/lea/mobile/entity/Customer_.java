@@ -14,8 +14,8 @@ public abstract class Customer_ {
 	public static volatile SingularAttribute<Customer, Float> balance;
 	public static volatile SingularAttribute<Customer, String> billingАddress;
 	public static volatile SingularAttribute<Customer, String> name;
+	public static volatile ListAttribute<Customer, ServicePackage> servicePackages;
 	public static volatile SingularAttribute<Customer, Integer> id;
-	public static volatile ListAttribute<Customer, Service> services;
 	public static volatile SingularAttribute<Customer, Date> activationDate;
 	public static volatile ListAttribute<Customer, CustomerContract> contracts;
 

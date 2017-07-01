@@ -4,6 +4,7 @@ import com.lea.mobile.app.AppSessionFactory;
 import com.lea.mobile.dao.api.BillDao;
 import com.lea.mobile.entity.Bill;
 import com.lea.mobile.entity.Bill_;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -13,6 +14,7 @@ import javax.persistence.criteria.Root;
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public class BillDaoImpl extends BaseDaoImpl<Bill> implements BillDao{
     @Override
     public void create(Bill entity) {

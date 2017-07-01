@@ -2,9 +2,11 @@ package com.lea.mobile.dao.daoimpl;
 
 import com.lea.mobile.dao.api.StatusDao;
 import com.lea.mobile.entity.Status;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class StatusDaoImpl extends BaseDaoImpl<Status> implements StatusDao{
     @Override
     public void create(Status entity) {

@@ -2,10 +2,9 @@ package com.lea.mobile.dao.daoimpl;
 
 import com.lea.mobile.app.AppSessionFactory;
 import com.lea.mobile.dao.api.PaymentDao;
-import com.lea.mobile.entity.Bill;
-import com.lea.mobile.entity.Bill_;
 import com.lea.mobile.entity.Payment;
 import com.lea.mobile.entity.Payment_;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,6 +14,7 @@ import javax.persistence.criteria.Root;
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public class PaymentDaoImpl extends BaseDaoImpl<Payment> implements PaymentDao{
     @Override
     public void create(Payment entity) {

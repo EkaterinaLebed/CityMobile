@@ -12,11 +12,11 @@ public class User {
     @Column(name = "userName")
     private String userName;
 
+    @Column(name = "userLogin")
+    private String userLogin;
+
     @Column(name = "userPassword")
     private byte[] userPassword;
-
-    @Column(name = "activity")
-    private boolean activity;
 
     public int getId() {
         return id;
@@ -26,27 +26,27 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
+    public String getName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setName(String userName) {
         this.userName = userName;
     }
 
-    public byte[] getUserPassword() {
+    public byte[] getPassword() {
         return userPassword;
     }
 
-    public void setUserPassword(byte[] userPassword) {
+    public void setPassword(byte[] userPassword) {
         this.userPassword = userPassword;
     }
 
-    public boolean isActivity() {
-        return activity;
+    public String getUserLogin() {
+        return userLogin;
     }
 
-    public void setActivity(boolean activity) {
-        this.activity = activity;
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 }

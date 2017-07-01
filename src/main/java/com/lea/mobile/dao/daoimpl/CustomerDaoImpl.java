@@ -2,9 +2,11 @@ package com.lea.mobile.dao.daoimpl;
 
 import com.lea.mobile.dao.api.CustomerDao;
 import com.lea.mobile.entity.Customer;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class CustomerDaoImpl extends BaseDaoImpl<Customer> implements CustomerDao{
     @Override
     public void create(Customer entity) {
