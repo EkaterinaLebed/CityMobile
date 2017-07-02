@@ -1,86 +1,96 @@
-
-#container{
-    margin: auto;
-    padding: 5px 0;
-    min-height: 100%;
-    display: block;
-}
-
-.userName {
-    left: 0;
-    display: inline;
-}
-
-.globalTools {
-    right: 0;
-    float: right;
-    width: 345px;
+body{
+    margin: 0;
 }
 
 header{
-    height: 35px;
+    width: 100%;
+    /*height: 46px;*/
+    background: #ff9933;
 }
 
-/*---------------------------------------------*/
-/*button HOR*/
-/*---------------------------------------------*/
-
-ul.btn {
-    margin: 0;
-    padding: 4px;
-}
-ul.btn li {
+.header-name{
     display: inline;
-    margin-right: 5px;
-    border: 1px;
-    padding: 3px;
-    border-radius: 5px;
-}
-
-/*---------------------------------------------*/
-/*menu VERT*/
-/*---------------------------------------------*/
-
-ul.list {
-    margin: 0;
-    padding: 4px;
-}
-ul.list li {
-    margin-right: 5px;
-    border: 1px solid;
-    padding: 3px;
-    border-radius: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    list-style: none;
-}
-.console-menu{
-    width: 150px;
-}
-
-/*---------------------------------------------*/
-/*BUTTON*/
-/*---------------------------------------------*/
-
-.field {
-    display: block;
-    width: 250px;
-}
-
-.field label{
-    display: block;
     float: left;
-    width: 30%;
-    vertical-align: bottom;
+    width: 25px;
+    font-size: 30px;
+    margin-left: 15px;
+    font-weight: bold;
+    padding-top: 1px;
 }
 
-input {
+.header-logo {
+    width: 289px;
+    height: 45px;
+    margin-left: 120px;
+    background-image: url("../img/citylogo.png");
+}
+
+.header-menu{
+    display: inline;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding-right: 20px;
+}
+
+.header-menu .welcome{
+    display: inline;
+    float: left;
+    width: 220px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.search-tool {
-    padding-top: 10px;
-    padding-bottom: 10px;
+.header-menu .item{
+    display: inline;
+    float: left;
+    width: 100px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 3px;
 }
 
+.item a{
+    text-decoration: none;
+    color: black;
+}
+
+.header-intro{
+    font-size: 13px;
+    background-color: darkgray;
+}
+
+
+/*BUTTONS-HEADER-MENU*/
+
+.btn{
+    height: 25px;
+    padding-top:2px;
+    font-weight: bold;
+}
+
+.login-btn{
+    background-image: url("../icons/login.jpg");
+    background-repeat: no-repeat;
+    padding-left: 32px;
+}
+
+.logout-btn{
+    background-image: url("../icons/logout.jpg");
+    background-repeat: no-repeat;
+    padding-left: 32px;
+}
+
+/*.connect-btn{*/
+    /*background-image: url("file:///home/lea/Desktop/INFOPULSE/download25x25.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*padding-left: 32px;*/
+/*}*/
+
+.lined{
+    border-bottom: dashed 1px;
+}
