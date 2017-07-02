@@ -30,6 +30,8 @@
                 <input type="submit" value="Register">
             </form>
         </div>
+
+        <jsp:include page="../parts/footer.jsp"/>
     </div>
 </body>
 </html>

@@ -20,6 +20,8 @@
                 <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>
         </div>
+
+        <jsp:include page="../parts/footer.jsp"/>
     </div>
 </body>
 </html>

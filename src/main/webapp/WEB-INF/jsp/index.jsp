@@ -12,6 +12,7 @@
   <body>
     <div id="container">
         <jsp:include page="parts/header.jsp"/>
+        <jsp:include page="parts/footer.jsp"/>
     </div>
   </body>
 </html>

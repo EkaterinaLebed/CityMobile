@@ -27,6 +27,7 @@
             </form>
         </div>
 
+        <jsp:include page="../parts/footer.jsp"/>
     </div>
 </body>
 </html>
