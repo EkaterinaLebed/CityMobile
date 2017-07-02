@@ -9,7 +9,7 @@
     <div class="header-menu">
         <c:choose>
             <c:when test="${sessionScope.user != null}">
-                <div class="welcome">WELCOME "${sessionScope.user.name}"!</div>
+                <div class="welcome">WELCOME ${sessionScope.user.name}!</div>
                 <div class="item">
                     <a href="<c:url value="/logout"/>">
                         <div class="btn logout-btn">LOGOUT</div>
