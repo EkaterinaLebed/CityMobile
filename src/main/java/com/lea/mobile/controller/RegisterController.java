@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 
 @Controller
-@RequestMapping()
 public class RegisterController {
     @Autowired
     UserService userService;
@@ -39,6 +38,6 @@ public class RegisterController {
             }
         }
 
-        return "redirect:" + request.getParameter("from");
+        return "redirect:/";
     }
 }

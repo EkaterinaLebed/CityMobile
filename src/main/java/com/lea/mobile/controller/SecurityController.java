@@ -39,7 +39,7 @@ public class SecurityController {
             }
         }
 
-        return "redirect:" + request.getParameter("from");
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)

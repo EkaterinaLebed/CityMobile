@@ -10,6 +10,28 @@ header{
     background: #ff9933;
 }
 
+.content{
+    margin-left: 10px;
+}
+
+.login-form{
+    width: 300px;
+}
+.field input{
+    float: right;
+}
+
+.login-form .submit-btn {
+    width: 200px;
+    margin-top: 10px;
+    display: inline;
+    margin-left: 40px;
+}
+
+.field{
+    margin-top: 10px;
+}
+
 .header-name{
     display: inline;
     float: left;

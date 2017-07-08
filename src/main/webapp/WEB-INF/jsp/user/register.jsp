@@ -11,8 +11,8 @@
     <div id="container">
         <jsp:include page="../parts/header.jsp"/>
 
-        <div>
-            <form method="post" action="<c:url value="/register/do"/>">
+        <div class="content">
+            <form class="login-form" method="post" action="<c:url value="/register/do"/>">
                 <div class="field">
                     <label for="id-name">name</label>
                     <input id="id-name" type="text" name="name">
@@ -26,8 +26,7 @@
                     <input id="id-pwd" type="password" name="pwd"/>
                 </div>
 
-                <input type="hidden" name="from" value="<%=request.getHeader("referer")%>"/>
-                <input type="submit" value="Register">
+                <input class="submit-btn" type="submit" value="Register">
             </form>
         </div>
 
