@@ -9,15 +9,14 @@
 </head>
 <body>
     <div id="container">
-        <jsp:include page="../../parts/header.jsp"/>
+        <jsp:include page="../parts/header.jsp"/>
 
         <div class="console-menu">
             <ul class="list">
-                <li><a href="<c:url value="/register"/>">Create Abonent</a></li>
-                <li><a href="<c:url value="/customer/find"/>">Find Abonent</a></li>
+                <li><a href="<c:url value="/abonent/create"/>">Create Abonent</a></li>
+                <li><a href="<c:url value="/abonent/find"/>">Find Abonent</a></li>
                 <li><a href="<c:url value="/load"/>">Load data from file</a></li>
                 <li><a href="<c:url value="/billing"/>">Perform Billing</a></li>
-                <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>
         </div>
 

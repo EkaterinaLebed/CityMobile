@@ -15,21 +15,28 @@ header{
 }
 
 .login-form{
-    width: 300px;
+    width: 250px;
 }
 .field input{
     float: right;
 }
 
 .login-form .submit-btn {
-    width: 200px;
+    width: 155px;
     margin-top: 10px;
     display: inline;
-    margin-left: 40px;
+    float:right;
 }
 
 .field{
     margin-top: 10px;
+}
+
+/*panel*/
+.panel{
+    width: 70%;
+    height: 30%;
+    background: burlywood;
 }
 
 .header-name{
@@ -69,6 +76,11 @@ header{
     text-align: right;
     margin-right: 10px;
     padding-top: 4px;
+}
+
+.welcome a{
+    text-decoration: none;
+    color: inherit;
 }
 
 .header-menu .item{

@@ -10,6 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class ManagerController {
     @RequestMapping(value = {"","/console"},method = RequestMethod.GET)
     public ModelAndView showManagerConsole() {
-        return new ModelAndView("pages/managerConsole");
+        return new ModelAndView("manager/console");
     }
 }
