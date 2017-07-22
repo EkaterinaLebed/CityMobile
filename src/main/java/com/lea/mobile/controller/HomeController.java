@@ -1,6 +1,6 @@
 package com.lea.mobile.controller;
 
-import com.lea.mobile.service.ServicePackageService;
+import com.lea.mobile.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServlet;
 @Controller
 public class HomeController extends HttpServlet {
     @Autowired
-    ServicePackageService servicePackageService;
+    ProductService productService;
 
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
     public ModelAndView showHomePage() {
         ModelAndView model = new ModelAndView("index");
-        model.addObject("serviceList", servicePackageService.selectAll());
+        model.addObject("serviceList", productService.selectAll());
         return model;
     }
 }

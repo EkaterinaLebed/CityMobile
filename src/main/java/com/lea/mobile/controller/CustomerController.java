@@ -1,5 +1,8 @@
 package com.lea.mobile.controller;
 
+import com.lea.mobile.entity.Customer;
+import com.lea.mobile.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/abonent")
 public class CustomerController {
+    @Autowired
+    CustomerService customerService;
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     ModelAndView showAbonentCreatePage(){
         return new ModelAndView("/abonent/createAbonent");
@@ -42,8 +48,11 @@ public class CustomerController {
     @ResponseBody
     @RequestMapping(value = "/create/do", method = RequestMethod.POST)
     public String create(HttpServletRequest request){
-        String login = request.getParameter("name");
-        String pwd = request.getParameter("address");
-        return "";
+        Customer customer = new Customer();
+        customer.setName(request.getParameter("name"));
+        customer.setBillingАddress(request.getParameter("address"));
+
+        customerService.create(customer);
+        return "OK";
     }
 }

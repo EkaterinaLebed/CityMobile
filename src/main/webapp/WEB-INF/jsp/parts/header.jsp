@@ -6,6 +6,17 @@
     <div class="header-name">CityMobile</div>
     <div class="header-logo"></div>
 
+    <div class="search" style="width: 600px;float: right;margin-right: 25%;">
+        <input type="text" id="complete-field"
+               name="searchParam" value="Поиск..."
+               class="search-field"
+               style="width: 100%;height: 20px;background: white;border: solid 1px;border-color: lightgrey;"
+               onfocus="if(this.value == 'Поиск...') { this.value = ''; }"
+               onblur="if(this.value == '') { this.value = 'Поиск...'; }"
+               onkeyup="search.doCompletion(this.value)">
+        <table id="complete-table" class="popupBox"></table>
+    </div>
+
     <div class="header-menu">
         <c:choose>
             <c:when test="${sessionScope.user != null}">

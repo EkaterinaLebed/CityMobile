@@ -29,7 +29,7 @@ public class Customer {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "CustomerServices", joinColumns = @JoinColumn(name = "customerId"), inverseJoinColumns = @JoinColumn(name = "serviceId"))
-    List <ServicePackage> servicePackages = new ArrayList<>();
+    List <Product> products = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "customer")
     List <CustomerContract> contracts = new ArrayList<>();
@@ -82,12 +82,12 @@ public class Customer {
         this.balance = balance;
     }
 
-    public List<ServicePackage> getServicePackages() {
-        return servicePackages;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setServicePackages(List<ServicePackage> servicePackages) {
-        this.servicePackages = servicePackages;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public List<CustomerContract> getContracts() {
@@ -107,7 +107,7 @@ public class Customer {
                 ", activationDate=" + activationDate +
                 ", deactivationDate=" + deactivationDate +
                 ", balance=" + balance +
-                ", services=" + servicePackages +
+                ", services=" + products +
                 ", contracts=" + contracts +
                 '}';
     }
