@@ -9,13 +9,13 @@ var abonentAction =(function(){
             if (this.readyState == 4 && this.status == 200) {
                 var elem = document.getElementById("acceptedMsg");
                 elem.innerHTML = "OK";
-                elem.setAttribute("visibility","visible")
+                elem.setAttribute("class","active-msg");
             }
         };
         req.onerror = function() {
             var elem = document.getElementById("acceptedMsg");
             elem.innerHTML = "";
-            elem.setAttribute("visibility","none")
+            elem.setAttribute("class","");
         };
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         req.send("name=" + document.getElementById("id-name").value +

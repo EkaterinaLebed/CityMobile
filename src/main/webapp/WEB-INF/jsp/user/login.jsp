@@ -17,12 +17,15 @@
                     <label for="id-login">login</label>
                     <input id="id-login" type="text" name="login">
                 </div>
+
                 <div class="field">
                     <label for="id-pwd">password</label>
                     <input id="id-pwd" type="password" name="pwd"/>
                 </div>
 
-                <input class="submit-btn" type="submit" value="Login">
+                <div class="buttons">
+                    <input class="submit-btn" type="submit" value="Login">
+                </div>
             </form>
         </div>
 

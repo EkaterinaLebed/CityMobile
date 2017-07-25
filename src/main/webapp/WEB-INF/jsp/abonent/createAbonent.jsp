@@ -24,9 +24,11 @@
                     <input id="id-address" type="text" name="address">
                 </div>
 
-                <div class="field">
-                    <button class="submit-btn" onclick="abonentAction.add()">Create</button>
-                    <div id="acceptedMsg"></div>
+                <div class="buttons-panel">
+                    <div class="element">
+                        <button class="submit-btn" onclick="abonentAction.add()">Create</button>
+                        <div id="acceptedMsg"></div>
+                    </div>
                 </div>
             </div>
 
