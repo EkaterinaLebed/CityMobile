@@ -7,7 +7,7 @@
     <title>[createAbonent]</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>"/>
     <script type="text/javascript" src="<c:url value="/resources/script/main.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="/resources/script/abonentAction.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/resources/script/abonentActions.js"/>"></script>
 </head>
 <body>
     <div id="container">

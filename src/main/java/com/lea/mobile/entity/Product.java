@@ -3,7 +3,7 @@ package com.lea.mobile.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Service")
+@Table(name = "Product")
 public class Product {
     @Id
     @Column(name = "id")

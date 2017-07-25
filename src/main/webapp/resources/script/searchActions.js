@@ -81,19 +81,5 @@ var search =(function(){
         cell.appendChild(linkElement);
     }
 
-    function getElementY(element){
-        var targetTop = 0;
-
-        if (element.offsetParent) {
-            while (element.offsetParent) {
-                targetTop += element.offsetTop;
-                element = element.offsetParent;
-            }
-        } else if (element.y) {
-            targetTop += element.y;
-        }
-        return targetTop;
-    }
-
     return module;
 })();
