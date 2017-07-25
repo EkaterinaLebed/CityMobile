@@ -29,7 +29,7 @@ public class ProductController {
                 .append("<id>").append(product.getId()).append("</id>")
                 .append("<name>").append(product.getName()).append("</name>")
                 .append("<price>").append(product.getPayment()).append("</price>")
-                .append("</product>");
+            .append("</product>");
         }
 
         return "<products>" + sb.toString() + "</products>";
