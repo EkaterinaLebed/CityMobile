@@ -18,7 +18,8 @@ var abonentAction =(function(){
             elem.setAttribute("visibility","none")
         };
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        req.send("name=Henry&address=Ford");
+        req.send("name=" + document.getElementById("id-name").value +
+        "&address="+document.getElementById("id-address").value);
     };
 
     return module;
