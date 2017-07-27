@@ -35,12 +35,13 @@
             <div class="panel">
                 <div class="message">Add abonent services</div>
                 <div class="block-add-new">
-                    <select>
+                    <select id="serviceElem" class="serviceList">
+                        <c:forEach var="service" items="${serviceList}">
+                            <option value=${service.id}>${service.name}</option>
+                        </c:forEach>
                         <option></option>
-                        <option>Пункт 1</option>
-                        <option>Пункт 2</option>
                     </select>
-                    <button>Add</button>
+                    <button onclick="abonentAction.addService()">Add</button>
                 </div>
 
                 <table>

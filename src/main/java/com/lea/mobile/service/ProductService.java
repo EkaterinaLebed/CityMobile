@@ -13,6 +13,10 @@ public class ProductService {
     @Autowired
     ProductDaoImpl productDao;
 
+    public Product selectById(int id){
+        return (id>0?productDao.read(id):null);
+    }
+
     public List<Product> selectAll(){
         return productDao.selectAll();
     }

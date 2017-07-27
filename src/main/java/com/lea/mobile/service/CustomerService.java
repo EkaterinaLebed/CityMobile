@@ -13,4 +13,13 @@ public class CustomerService {
     public void create(Customer customer) {
         customerDao.create(customer);
     }
+
+    public Customer selectById(int id) {
+        return (id>0?customerDao.read(id):null);
+    }
+
+    public void update(Customer entity) {
+        customerDao.update(entity);
+    }
+
 }

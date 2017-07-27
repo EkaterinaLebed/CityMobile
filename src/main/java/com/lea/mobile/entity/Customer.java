@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "Customer")
 public class Customer {
-    @Id
+    @Id @GeneratedValue
     @Column(name = "id")
     private int id;
 
