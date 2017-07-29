@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c93c60d-1a00-43ef-906d-5a3452bc46a3" name="Default" comment="page &quot;Create abonent&quot;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/entity/CustomerProduct.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/citymobile.war" afterPath="$PROJECT_DIR$/target/citymobile.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/lea/mobile/entity/Customer.java" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/entity/Customer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/CustomerController.java" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/CustomerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/lea/mobile/service/CustomerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/lea/mobile/service/CustomerService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/lea/mobile/entity/Customer_.java" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/lea/mobile/entity/Customer_.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/script/abonentActions.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/script/abonentActions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/abonent/createAbonent.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/abonent/createAbonent.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="citymobile.iws" />
@@ -36,7 +30,7 @@
       <file leaf-file-name="CustomerController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/CustomerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33235294" vertical-offset="1177" max-vertical-offset="1545">
+            <state vertical-scroll-proportion="0.53038675" vertical-offset="1002" max-vertical-offset="1545">
               <caret line="107" column="22" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
               <folding />
             </state>
@@ -824,7 +818,7 @@
       <workItem from="1501268833212" duration="4558000" />
       <workItem from="1501274528268" duration="83000" />
       <workItem from="1501275336830" duration="913000" />
-      <workItem from="1501299193093" duration="7256000" />
+      <workItem from="1501299193093" duration="7331000" />
     </task>
     <task id="LOCAL-00001" summary="index page">
       <created>1499011785102</created>
@@ -926,11 +920,15 @@
       <created>1501200007514</created>
       <updated>1501200007514</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="page &quot;Create abonent&quot;">
+      <created>1501306516083</created>
+      <updated>1501306516083</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150933000" />
+    <option name="totallyTimeSpent" value="151008000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -957,7 +955,7 @@
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39712918" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27561557" sideWeight="0.50079745" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32376397" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32376397" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2827641" sideWeight="0.50079745" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19459888" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1422,7 +1420,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lea/mobile/controller/CustomerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33235294" vertical-offset="1177" max-vertical-offset="1545">
+        <state vertical-scroll-proportion="0.53038675" vertical-offset="1002" max-vertical-offset="1545">
           <caret line="107" column="22" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
           <folding />
         </state>
