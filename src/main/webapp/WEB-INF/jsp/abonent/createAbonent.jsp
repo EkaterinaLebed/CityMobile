@@ -44,18 +44,17 @@
                     <button onclick="abonentAction.addService()">Add</button>
                 </div>
 
-                <table>
+                <table id="serviceTable">
                     <tr>
                         <th>Service</th>
                         <th>Date activated</th>
                         <th>Date deactivated</th>
                         <th>Payrol</th>
                     </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
+                    <tr id="serviceTableLineNull">
+                        <td>#</td>
+                        <td></td>
+                        <td></td>
                         <td></td>
                     </tr>
                 </table>

@@ -27,9 +27,8 @@ public class Customer {
     @Column(name = "balance")
     private float balance;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "CustomerServices", joinColumns = @JoinColumn(name = "customerId"), inverseJoinColumns = @JoinColumn(name = "serviceId"))
-    List <Product> products = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "customer")
+    List <CustomerProduct> products = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "customer")
     List <CustomerContract> contracts = new ArrayList<>();
@@ -82,11 +81,11 @@ public class Customer {
         this.balance = balance;
     }
 
-    public List<Product> getProducts() {
+    public List<CustomerProduct> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(List<CustomerProduct> products) {
         this.products = products;
     }
 

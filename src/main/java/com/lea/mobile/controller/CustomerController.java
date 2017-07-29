@@ -1,6 +1,8 @@
 package com.lea.mobile.controller;
 
 import com.lea.mobile.entity.Customer;
+import com.lea.mobile.entity.CustomerProduct;
+import com.lea.mobile.entity.Product;
 import com.lea.mobile.service.CustomerService;
 import com.lea.mobile.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/abonent")
@@ -76,19 +80,39 @@ public class CustomerController {
 
         int id = Integer.parseInt(request.getParameter("abonentId"));
         int serviceId = Integer.parseInt(request.getParameter("serviceId"));
-        return "<error>0<error>";
 
-//        Customer customer = customerService.selectById(id);
-//        Product product = productService.selectById(serviceId);
-//        customerService.addProduct(customer,product);
+        Customer customer = customerService.selectById(id);
+        Product product = productService.selectById(serviceId);
 
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("<product>")
-//            .append("<name>").append(product.getName()).append("</name>")
-//            .append("<activated_date>").append(new Date()).append("</activated_date>")
-//            .append("<payment>").append(product.getPayment()).append("</payment>")
-//        .append("</product>");
-//
-//        return sb.toString();
+        if(customer==null || product==null) {
+            return "<error>1</error>";
+        }
+
+        CustomerProduct customerProduct = new CustomerProduct();
+        customerProduct.setCustomer(customer);
+        customerProduct.setProduct(product);
+        customerProduct.setDateActivated(new Date());
+        customerService.addProduct(customer,customerProduct);
+
+        SimpleDateFormat dateFormat= new SimpleDateFormat("dd.MM.yyyy");
+        String dateActivated = " ";
+        String dateDeactivated = " ";
+
+        if(customerProduct.getDateActivated()!=null){
+            dateActivated = dateFormat.format(customerProduct.getDateActivated());
+        }
+        if(customerProduct.getDateDeactivated()!=null){
+            dateDeactivated = dateFormat.format(customerProduct.getDateDeactivated());
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("<product>")
+            .append("<name>").append(customerProduct.getName()).append("</name>")
+            .append("<activated_date>").append(dateActivated).append("</activated_date>")
+            .append("<deactivated_date>").append(dateDeactivated).append("</deactivated_date>")
+            .append("<payment>").append(customerProduct.getPayment()).append("</payment>")
+        .append("</product>");
+
+        return sb.toString();
     }
 }

@@ -41,7 +41,31 @@ var abonentAction =(function(){
         req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 if(this.responseXML){
-                    console.log(this.responseXML);
+                    var table = document.getElementById("serviceTable");
+
+                    if(table){
+                        var tableLineNull = document.getElementById("serviceTableLineNull");
+                        if(tableLineNull){
+                            tableLineNull.parentNode.removeChild(tableLineNull);
+                        }
+
+                        var product = this.responseXML.getElementsByTagName("product")[0];
+
+                        if(product!=null){
+                            var name = product.getElementsByTagName("name")[0];
+                            var actDate = product.getElementsByTagName("activated_date")[0];
+                            var deactDate = product.getElementsByTagName("deactivated_date")[0];
+                            var payment = product.getElementsByTagName("payment")[0];
+
+                            var row = document.createElement("tr");
+                            row.innerHTML =
+                                "<td>"+name.childNodes[0].nodeValue+
+                                "</td><td>"+actDate.childNodes[0].nodeValue+
+                                "</td><td>"+deactDate.childNodes[0].nodeValue+
+                                "</td><td>"+payment.childNodes[0].nodeValue+"</td>";
+                            table.appendChild(row);
+                        }
+                    }
                 }
             }
         };

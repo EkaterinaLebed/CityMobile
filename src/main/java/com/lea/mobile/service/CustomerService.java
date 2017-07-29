@@ -2,6 +2,7 @@ package com.lea.mobile.service;
 
 import com.lea.mobile.dao.api.CustomerDao;
 import com.lea.mobile.entity.Customer;
+import com.lea.mobile.entity.CustomerProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,12 @@ public class CustomerService {
         return (id>0?customerDao.read(id):null);
     }
 
-    public void update(Customer entity) {
-        customerDao.update(entity);
+    public void update(Customer customer) {
+        customerDao.update(customer);
     }
 
+    public void addProduct(Customer customer, CustomerProduct customerProduct) {
+        customer.getProducts().add(customerProduct);
+        customerDao.update(customer);
+    }
 }
