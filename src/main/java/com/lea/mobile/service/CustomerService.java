@@ -6,6 +6,9 @@ import com.lea.mobile.entity.CustomerProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CustomerService {
     @Autowired
@@ -26,5 +29,12 @@ public class CustomerService {
     public void addProduct(Customer customer, CustomerProduct customerProduct) {
         customer.getProducts().add(customerProduct);
         customerDao.update(customer);
+    }
+
+    public List<Customer> search(String text) {
+        if(!text.isEmpty()) {
+            return customerDao.selectLike(text);
+        }
+        return new ArrayList<>();
     }
 }

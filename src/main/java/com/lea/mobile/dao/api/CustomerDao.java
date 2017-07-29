@@ -3,6 +3,8 @@ package com.lea.mobile.dao.api;
 
 import com.lea.mobile.entity.Customer;
 
-public interface CustomerDao extends GenericDao<Customer> {
+import java.util.List;
 
+public interface CustomerDao extends GenericDao<Customer> {
+    public List<Customer> selectLike(String text);
 }

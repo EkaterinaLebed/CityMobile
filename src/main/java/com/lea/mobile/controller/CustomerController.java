@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/abonent")
@@ -49,10 +50,21 @@ public class CustomerController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
-    String search(@RequestParam String name){
+    @RequestMapping(value = "/search", method = RequestMethod.GET,
+    produces = "text/xml; charset=utf-8")
+    public String search(@RequestParam(value = "text", required = true) String text){
         //@ResponseBody + @Controller = @RestController
-        return name;
+        List<Customer> customers = customerService.search(text);
+        StringBuilder sb = new StringBuilder();
+
+        for (Customer customer:customers){
+            sb.append("<customer>")
+                .append("<id>").append(customer.getId()).append("</id>")
+                .append("<name>").append(customer.getId()).append("</name>")
+            .append("</customer>");
+        }
+
+        return "<customers>" + sb.toString() + "</customers>";
     }
 
     @ResponseBody
