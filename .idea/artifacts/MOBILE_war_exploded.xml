@@ -2,10 +2,10 @@
   <artifact type="exploded-war" name="MOBILE:war exploded">
     <output-path>$PROJECT_DIR$/target/citymobile</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="MOBILE/web/Web" />
+      <element id="javaee-facet-resources" facet="citymobile/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="MOBILE" />
+          <element id="module-output" name="citymobile" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.8.RELEASE" />
