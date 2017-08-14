@@ -7,8 +7,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "Customer")
+@SuppressWarnings("unused")
 public class Customer {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
 

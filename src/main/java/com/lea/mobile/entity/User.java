@@ -4,8 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "User")
+@SuppressWarnings("unused")
 public class User {
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
 

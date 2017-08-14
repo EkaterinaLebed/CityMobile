@@ -5,8 +5,10 @@ import java.util.Date;
 
 @Entity
 @Table(name = "CustomerService")
+@SuppressWarnings("unused")
 public class CustomerProduct {
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
 

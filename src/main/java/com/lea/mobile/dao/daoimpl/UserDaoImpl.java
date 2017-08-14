@@ -10,9 +10,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
+@Transactional
 @SuppressWarnings({"unused", "unchecked"})
 public class UserDaoImpl implements UserDao{
     @PersistenceContext

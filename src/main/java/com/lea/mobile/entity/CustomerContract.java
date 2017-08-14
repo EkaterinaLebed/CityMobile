@@ -6,8 +6,10 @@ import java.util.Date;
 
 @Entity
 @Table(name = "CustomerContract")
+@SuppressWarnings("unused")
 public class CustomerContract {
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
 
