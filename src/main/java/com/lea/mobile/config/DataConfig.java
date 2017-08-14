@@ -6,13 +6,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
+@EnableTransactionManagement
 @PropertySource("classpath:app.properties")
 public class DataConfig {
     @Resource
@@ -30,12 +33,19 @@ public class DataConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource());
-        entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        entityManagerFactoryBean.setPackagesToScan(env.getRequiredProperty("db.entitymanager.packages.to.scan"));
-        entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
-        return entityManagerFactoryBean;
+        LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
+        bean.setDataSource(dataSource());
+        bean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+        bean.setPackagesToScan(env.getRequiredProperty("db.entitymanager.packages.to.scan"));
+        bean.setJpaProperties(getHibernateProperties());
+        return bean;
+    }
+
+    @Bean
+    public JpaTransactionManager transactionManager() {
+        JpaTransactionManager bean = new JpaTransactionManager();
+        bean.setEntityManagerFactory(entityManagerFactory().getObject());
+        return bean;
     }
 
     private Properties getHibernateProperties() {
