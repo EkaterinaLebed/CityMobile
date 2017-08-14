@@ -22,11 +22,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="citymobile" />
         <module name="JAVA3" />
         <module name="MOBILE" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="citymobile" target="1.8" />
       <module name="MOBILE" target="1.8" />
     </bytecodeTargetLevel>
   </component>
