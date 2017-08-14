@@ -1,12 +1,12 @@
 package com.lea.mobile.dao.daoimpl;
 
-import com.lea.mobile.app.AppSessionFactory;
 import com.lea.mobile.dao.api.BillDao;
 import com.lea.mobile.entity.Bill;
 import com.lea.mobile.entity.Bill_;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -15,37 +15,38 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public class BillDaoImpl extends BaseDaoImpl<Bill> implements BillDao{
+@SuppressWarnings({"unused", "unchecked"})
+public class BillDaoImpl implements BillDao{
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
     public void create(Bill entity) {
-        super.create(entity);
+        entityManager.persist(entity);
     }
 
     @Override
     public Bill read(int id) {
-        return super.read(Bill.class,id);
+        return entityManager.find(Bill.class,id);
     }
 
     @Override
     public void update(Bill entity) {
-        super.update(entity);
+        entityManager.merge(entity);
     }
 
     @Override
     public void delete(Bill entity) {
-        super.delete(entity);
+        entityManager.remove(entity);
     }
 
     @Override
     public List<Bill> selectAll() {
-        return super.selectAll(Bill.class);
+        return entityManager.createQuery("FROM Bill",Bill.class).getResultList();
     }
 
     @Override
     public List<Bill> selectByPeriod(Date startDate, Date endDate) {
-        EntityManager entityManager = AppSessionFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Bill> criteria = builder.createQuery(Bill.class);
         Root<Bill> root = criteria.from(Bill.class);
@@ -57,11 +58,6 @@ public class BillDaoImpl extends BaseDaoImpl<Bill> implements BillDao{
 
         criteria.where(predicate);
 
-        List<Bill> list= entityManager.createQuery(criteria).getResultList();
-
-        entityManager.getTransaction().commit();
-        entityManager.close();
-
-        return list;
+        return entityManager.createQuery(criteria).getResultList();
     }
 }
