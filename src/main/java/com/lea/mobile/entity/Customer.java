@@ -17,7 +17,7 @@ public class Customer {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "billingАddress")
+    @Column(name = "address")
     private String billingАddress;
 
     @Column(name = "activationDate")

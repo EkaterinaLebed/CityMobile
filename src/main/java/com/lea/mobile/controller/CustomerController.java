@@ -74,8 +74,13 @@ public class CustomerController {
         Customer customer = new Customer();
         customer.setName(request.getParameter("name"));
         customer.setBillingАddress(request.getParameter("address"));
+        customer.setActivationDate(new Date());
 
-        customerService.create(customer);
+        try {
+            customerService.create(customer);
+        } catch (Exception e) {
+            return "<error>"+e.toString()+"</error>";
+        }
 
         StringBuilder sb = new StringBuilder();
         sb.append("<customer>")
