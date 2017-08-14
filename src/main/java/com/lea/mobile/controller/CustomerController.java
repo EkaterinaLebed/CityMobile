@@ -28,24 +28,24 @@ public class CustomerController {
     ProductService productService;
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    ModelAndView showAbonentCreatePage(){
+    ModelAndView showCreatePage(){
         ModelAndView model = new ModelAndView("/abonent/createAbonent");
         model.addObject("serviceList",productService.selectAll());
         return model;
     }
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
-    ModelAndView showAbonentFindPage(){
+    ModelAndView showFindPage(){
         return new ModelAndView("/abonent/findAbonent");
     }
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
-    ModelAndView showAbonentInfoPage(){
+    ModelAndView showInfoPage(){
         return new ModelAndView("/abonent/abonentInfo");
     }
 
     @RequestMapping(value = "/cabinet", method = RequestMethod.GET)
-    ModelAndView showAbonentCabinetPage(){
+    ModelAndView showCabinetPage(){
         return new ModelAndView("/abonent/abonentCabinet");
     }
 
