@@ -68,7 +68,7 @@ public class CustomerController {
         for (Customer customer:customers){
             sb.append("<customer>")
                 .append("<id>").append(customer.getId()).append("</id>")
-                .append("<name>").append(customer.getId()).append("</name>")
+                .append("<name>").append(customer.getName()).append("</name>")
             .append("</customer>");
         }
 

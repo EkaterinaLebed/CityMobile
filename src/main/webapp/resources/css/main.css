@@ -70,6 +70,9 @@ header{
 /*panel*/
 /*---------------------------------------------*/
 
+.panel-top{
+    margin-top: 10px;
+}
 .panel{
     width: 70%;
     height: 30%;
