@@ -17,6 +17,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:app.properties")
+@SuppressWarnings("SpringFacetCodeInspection")
 public class DataConfig {
     @Resource
     private Environment env;
@@ -56,6 +57,7 @@ public class DataConfig {
         properties.put("hibernate.connection.CharSet",env.getRequiredProperty("db.hibernate.connection.CharSet"));
         properties.put("hibernate.connection.characterEncoding",env.getRequiredProperty("db.hibernate.connection.characterEncoding"));
         properties.put("hibernate.connection.useUnicode",env.getRequiredProperty("db.hibernate.connection.useUnicode"));
+        properties.put("hibernate.enable_lazy_load_no_trans",env.getRequiredProperty("db.hibernate.enable_lazy_load_no_trans"));
         return properties;
     }
 }
