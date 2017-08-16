@@ -34,7 +34,7 @@
 
             <div class="panel">
                 <div class="message">Add abonent services</div>
-                <div class="block-add-new">
+                <div class="panel-block">
                     <select id="serviceElem" class="serviceList">
                         <c:forEach var="service" items="${serviceList}">
                             <option value=${service.id}>${service.name}</option>
