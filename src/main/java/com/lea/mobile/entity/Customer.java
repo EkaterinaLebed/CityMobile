@@ -20,6 +20,9 @@ public class Customer {
     @Column(name = "address")
     private String billingАddress;
 
+    @Column(name = "activated")
+    private boolean activated;
+
     @Column(name = "activationDate")
     private Date activationDate;
 
@@ -97,6 +100,14 @@ public class Customer {
 
     public void setContracts(List<CustomerContract> contracts) {
         this.contracts = contracts;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
     }
 
     @Override
