@@ -41,22 +41,26 @@
                         </c:forEach>
                         <option></option>
                     </select>
-                    <button onclick="abonentAction.addService()">Add</button>
+                    <button onclick="abonentAction.addServiceOnTable()">Add</button>
                 </div>
 
                 <table id="serviceTable">
-                    <tr>
-                        <th>Service</th>
-                        <th>Date activated</th>
-                        <th>Date deactivated</th>
-                        <th>Payrol</th>
-                    </tr>
-                    <tr id="serviceTableLineNull">
-                        <td>#</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Date activated</th>
+                            <th>Date deactivated</th>
+                            <th>Payrol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="serviceTableLineNull">
+                            <td>#</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
