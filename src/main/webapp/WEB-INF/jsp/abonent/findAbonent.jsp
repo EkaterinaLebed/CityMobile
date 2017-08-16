@@ -29,15 +29,15 @@
                 <div class="message"> </div>
                 <table id="abonentTable">
                     <thead>
-                        <tr>
+                        <tr class="tb-header">
                             <th>Abonent</th>
-                            <th></th>
+                            <th class="tb-action"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>#</td>
-                            <td></td>
+                            <td class="tb-action"></td>
                         </tr>
                     </tbody>
                 </table>

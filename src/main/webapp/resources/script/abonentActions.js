@@ -31,6 +31,23 @@ var abonentAction =(function(){
             "&address=" + document.getElementById("id-address").value);
     };
 
+    module.deactivate = function(abonentId){
+        var req = requestService.initRequest();
+        req.open("GET", "/citymobile/abonent/deactivate?id="+abonentId, true);
+        req.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if(this.responseXML){
+                    var elemMsg = document.getElementById("message");
+                    if(elemMsg){
+                        elemMsg.innerHTML="Abonent successful deactivated";
+                    }
+                }
+            }
+        };
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.send(null);
+    };
+
     module.addService = function() {
         if(!document.abonentId){
             return;
@@ -74,6 +91,10 @@ var abonentAction =(function(){
             "&serviceId=" + document.getElementById("serviceElem").value);
     };
 
+    module.deactivateService = function() {
+
+    };
+
     module.find = function() {
         var ptext = document.getElementById("id-name").value;
         var req = requestService.initRequest();
@@ -82,14 +103,15 @@ var abonentAction =(function(){
             if (this.readyState == 4 && this.status == 200) {
                 if (this.responseXML) {
                     var elemTable = document.getElementById("abonentTable");
+                    var elemItem = null;
                     var customers = this.responseXML.getElementsByTagName("customers")[0];
                     clearTable(elemTable);
 
                     if(elemTable && customers){
                         var tbody = elemTable.getElementsByTagName("tbody")[0];
                         if(customers.childNodes.length==0) {
-                            var elemItem = document.createElement("tr");
-                            elemItem.innerHTML = "<td>#</td><td></td>";
+                            elemItem = document.createElement("tr");
+                            elemItem.innerHTML = "<td>#</td><td class='tb-action'></td>";
                             tbody.appendChild(elemItem);
                         }
 
@@ -98,10 +120,12 @@ var abonentAction =(function(){
 
                             var id = customer.getElementsByTagName("id")[0];
                             var name = customer.getElementsByTagName("name")[0];
+                            var idValue = id.childNodes[0].nodeValue;
+                            var nameValue = name.childNodes[0].nodeValue;
 
-                            var elemItem = document.createElement("tr");
-                            elemItem.innerHTML = "<td>" + name.childNodes[0].nodeValue +
-                                "</td><td>" + id.childNodes[0].nodeValue + "</td>";
+                            elemItem = document.createElement("tr");
+                            elemItem.innerHTML = "<td>" +nameValue +
+                                "</td><td class='tb-action'><button onclick=location.href='/citymobile/abonent/info?id="+idValue+"'>Show</button></td>";
                             tbody.appendChild(elemItem);
                         }
                     }
@@ -113,14 +137,16 @@ var abonentAction =(function(){
         req.send(null);
         };
 
-        function clearTable(table){
-            if(table){
-                var tbody = table.getElementsByTagName("tbody")[0];
-                for (loop = tbody.childNodes.length - 1; loop >= 0; loop--) {
+    function clearTable(table){
+        if(table){
+            var tbody = table.getElementsByTagName("tbody")[0];
+            for (loop = tbody.childNodes.length - 1; loop >= 0; loop--) {
+                if(tbody.childNodes[loop].className!="tb-head"){
                     tbody.removeChild(tbody.childNodes[loop]);
                 }
             }
         }
+    }
 
         return module;
 })();

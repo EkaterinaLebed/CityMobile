@@ -240,3 +240,7 @@ footer li{
 #complete-table td{
     border: 0;
 }
+
+#abonentTable .tb-action{
+    width: 35px;
+}
