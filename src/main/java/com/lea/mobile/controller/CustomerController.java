@@ -7,6 +7,8 @@ import com.lea.mobile.service.CustomerService;
 import com.lea.mobile.service.ProductService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,8 +45,18 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
-    ModelAndView showInfoPage(){
-        return new ModelAndView("/abonent/abonentInfo");
+    ModelAndView showInfoPage(@RequestParam int id){
+        Customer customer = null;
+        try {
+            customer = customerService.selectById(id);
+        } catch (Exception e) {
+            logger.error("Customer not found, id=" + id+", "+e.toString());
+        }
+
+        ModelAndView model = new ModelAndView("/abonent/abonentInfo");
+        model.addObject("customer",customer);
+        model.addObject("serviceList",productService.selectAll());
+        return model;
     }
 
     @RequestMapping(value = "/cabinet", method = RequestMethod.GET)
@@ -58,7 +70,13 @@ public class CustomerController {
         //@ResponseBody + @Controller = @RestController
         logger.debug("Invoked");
 
-        List<Customer> customers = customerService.search(text);
+        List<Customer> customers = null;
+        try {
+            customers = customerService.search(text);
+        } catch (Exception e) {
+            logger.error("FAILED. '"+e.toString());
+        }
+
         if(customers==null){
             logger.debug("Not found, request='"+text+"'");
             return "<customers></customers>";
@@ -84,6 +102,7 @@ public class CustomerController {
         customer.setName(request.getParameter("name"));
         customer.setBillingАddress(request.getParameter("address"));
         customer.setActivationDate(new Date());
+        customer.setActivated(true);
 
         try {
             customerService.create(customer);
@@ -158,13 +177,56 @@ public class CustomerController {
 
         @SuppressWarnings("StringBufferReplaceableByString")
         StringBuilder sb = new StringBuilder();
-        sb.append("<product>")
+        sb.append("<products><product>")
+            .append("<id>").append(customerProduct.getId()).append("</id>")
             .append("<name>").append(customerProduct.getName()).append("</name>")
             .append("<activated_date>").append(dateActivated).append("</activated_date>")
             .append("<deactivated_date>").append(dateDeactivated).append("</deactivated_date>")
             .append("<payment>").append(customerProduct.getPayment()).append("</payment>")
-        .append("</product>");
+        .append("</product></products>");
 
         return sb.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/activate", method = RequestMethod.GET)
+    public ResponseEntity<Void> activate(@RequestParam("id") int id){
+        Customer customer;
+        try {
+            customer = customerService.selectById(id);
+        } catch (Exception e) {
+            logger.error("Customer not found, id=" + id+", "+e.toString());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if(customer!=null){
+            customerService.activated(customer,true);
+            logger.debug("Customer activated, id=" + id);
+        }else {
+            logger.error("Customer not found, id=" + id);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/deactivate", method = RequestMethod.GET)
+    public ResponseEntity<Void> deactivate(@RequestParam("id") int id){
+        Customer customer;
+        try {
+            customer = customerService.selectById(id);
+        } catch (Exception e) {
+            logger.error("Customer not found, id=" + id+", "+e.toString());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if(customer!=null){
+            customerService.activated(customer,false);
+            logger.debug("Customer deactivated, id=" + id);
+        }else {
+            logger.error("Customer not found, id=" + id);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

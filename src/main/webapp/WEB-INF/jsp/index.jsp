@@ -8,7 +8,6 @@
       <title>CityMobile</title>
       <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>"/>
       <script type="text/javascript" src="<c:url value="/resources/script/main.js"/>"></script>
-      <script type="text/javascript" src="<c:url value="/resources/script/searchActions.js"/>"></script>
   </head>
 
   <body>

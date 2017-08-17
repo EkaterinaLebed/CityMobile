@@ -18,8 +18,7 @@ public class ProductController {
     ProductService productService;
 
     @ResponseBody
-    @RequestMapping(value = "/search", method = RequestMethod.GET,
-    produces = "text/xml; charset=utf-8")
+    @RequestMapping(value = "/search", method = RequestMethod.GET,produces = "text/xml; charset=utf-8")
     public String search(@RequestParam(value = "text", required = true) String text){
         List<Product> products = productService.search(text);
         StringBuilder sb = new StringBuilder();

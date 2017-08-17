@@ -5,6 +5,8 @@ import com.lea.mobile.entity.Customer;
 import com.lea.mobile.entity.CustomerProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -14,6 +16,19 @@ public class CustomerService {
 
     public void create(Customer customer) {
         customerDao.create(customer);
+    }
+
+    public void activated(Customer customer,boolean activated){
+        if(activated){
+            customer.setActivationDate(new Date());
+            customer.setDeactivationDate(null);
+            customer.setActivated(true);
+            customerDao.update(customer);
+        }else {
+            customer.setDeactivationDate(new Date());
+            customer.setActivated(false);
+            customerDao.update(customer);
+        }
     }
 
     public Customer selectById(int id) {
