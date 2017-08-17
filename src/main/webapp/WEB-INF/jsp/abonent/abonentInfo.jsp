@@ -19,14 +19,16 @@
             <div class="container-panel">
                 <c:choose>
                     <c:when test="${customer.activated}">
-                        <button onclick="abonentAction.deactivate(${customer.id})">Deactivate abonent</button>
+                        <button id="btnActivateSwitch" onclick="abonentAction.deactivate(${customer.id})">
+                            Deactivate abonent
+                        </button>
                     </c:when>
                     <c:otherwise>
-                        <button onclick="abonentAction.activate(${customer.id})">Activate abonent</button>
+                        <button id="btnActivateSwitch" onclick="abonentAction.activate(${customer.id})">
+                            Activate abonent
+                        </button>
                     </c:otherwise>
                 </c:choose>
-
-                <div class="btn-message" id="message"></div>
             </div>
 
             <div class="panel">
@@ -56,11 +58,7 @@
                         <c:choose>
                             <c:when test="${empty customer.products}">
                                 <tr id="serviceTableLineNull">
-                                    <td>#</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>#</td><td></td><td></td><td></td><td></td>
                                 </tr>
                             </c:when>
                             <c:otherwise>
@@ -70,7 +68,7 @@
                                         <td>${productItem.dateActivated}</td>
                                         <td>${productItem.dateDeactivated}</td>
                                         <td>${productItem.product.payment}</td>
-                                        <td><button onclick="">deactivate</button></td>
+                                        <td class='tb-action'><button class="deactivate" onclick="">deactivate</button></td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>

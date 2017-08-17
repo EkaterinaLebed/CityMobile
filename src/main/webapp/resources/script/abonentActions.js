@@ -39,9 +39,11 @@ var abonentAction =(function(){
         req.open("GET", "/citymobile/abonent/activate?id="+abonentId, true);
         req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                var elemMsg = document.getElementById("message");
-                if(elemMsg){
-                    elemMsg.innerHTML="Abonent activated";
+                var btnActivate = document.getElementById("btnActivateSwitch");
+                if(btnActivate){
+                    btnActivate.innerHTML="Deactivate abonent";
+                    btnActivate.onclick=function(){
+                        abonentAction.deactivate(abonentId)};
                 }
             }
         };
@@ -54,9 +56,11 @@ var abonentAction =(function(){
         req.open("GET", "/citymobile/abonent/deactivate?id="+abonentId, true);
         req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                var elemMsg = document.getElementById("message");
-                if(elemMsg){
-                    elemMsg.innerHTML="Abonent deactivated";
+                var btnActivate = document.getElementById("btnActivateSwitch");
+                if(btnActivate){
+                    btnActivate.innerHTML = "Activate abonent";
+                    btnActivate.onclick=function(){
+                        abonentAction.activate(abonentId)}
                 }
             }
         };
@@ -163,7 +167,7 @@ var abonentAction =(function(){
                     "</td><td>"+actDate.childNodes[0].nodeValue+
                     "</td><td>"+deactDate.childNodes[0].nodeValue+
                     "</td><td>"+payment.childNodes[0].nodeValue+"</td>"+
-                    "</td><td class='tb-action'><button onclick=location.href='/citymobile/abonent/deactivate?id="+idValue+"'>deactivate</button></td>";
+                    "</td><td class='tb-action'><button class='deactivate' onclick=location.href='/citymobile/abonent/deactivate?id="+idValue+"'>deactivate</button></td>";
             }
 
             tbody.appendChild(elemItem);

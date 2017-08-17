@@ -255,5 +255,15 @@ footer li{
 }
 
 #abonentTable .tb-action{
-    width: 35px;
+    width: 70px;
+}
+#serviceTable .tb-action{
+    width: 90px;
+}
+/*-------------------------------------------------------*/
+/*tb-action. buttons*/
+/*-------------------------------------------------------*/
+
+.tb-action .deactivate{
+    width: 85px;
 }
