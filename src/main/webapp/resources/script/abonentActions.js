@@ -165,7 +165,7 @@ var abonentAction =(function(){
 
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         req.send(null);
-        };
+    };
 
     function clearTableServices(elemTable){
         var tbody = elemTable.getElementsByTagName("tbody")[0];
