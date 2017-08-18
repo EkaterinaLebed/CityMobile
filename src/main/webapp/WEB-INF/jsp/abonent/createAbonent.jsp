@@ -44,7 +44,7 @@
                     <button onclick="abonentAction.addService('CREATE')">Add</button>
                 </div>
 
-                <table id="serviceTable">
+                <table class="table-stlT2" id="serviceTable">
                     <thead>
                         <tr>
                             <th>Service</th>

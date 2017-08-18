@@ -27,7 +27,7 @@
 
             <div class="panel panel-top">
                 <div class="message"> </div>
-                <table id="abonentTable">
+                <table class="table-stlT2" id="abonentTable">
                     <thead>
                         <tr class="tb-header">
                             <th>Abonent</th>

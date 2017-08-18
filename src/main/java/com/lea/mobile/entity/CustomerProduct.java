@@ -20,6 +20,9 @@ public class CustomerProduct {
     @JoinColumn(name="productId")
     private Product product;
 
+    @Column(name = "activated", nullable = false)
+    private boolean activated;
+
     @Column(name = "dateActivated")
     private Date dateActivated;
 
@@ -74,5 +77,11 @@ public class CustomerProduct {
         return (product!=null? product.getPayment(): 0);
     }
 
+    public boolean isActivated() {
+        return activated;
+    }
 
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
 }

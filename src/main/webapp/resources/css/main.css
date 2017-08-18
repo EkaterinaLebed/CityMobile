@@ -1,7 +1,7 @@
 
 body{
     margin: 0;
-    background-color: gainsboro;
+    background-color: ghostwhite;
 }
 
 header{
@@ -105,19 +105,6 @@ header{
 .panel select{
     width: 180px;
     height: 25px;
-}
-
-.panel table{
-    margin-top: 10px;
-    width: 450px;
-    border-collapse: collapse;
-    border: 2px solid white;
-}
-
-.panel table, td, th {
-    padding: 3px;
-    border: 1px solid dimgrey;
-    text-align: left;
 }
 
 .header-name{
@@ -244,6 +231,8 @@ footer ul{
 }
 
 footer li{
+    font-weight: bold;
+    border-bottom: solid 1px;
     display: inline;
 }
 
@@ -265,13 +254,122 @@ footer li{
     width: 70px;
 }
 
-#serviceTable .tb-action{
-    width: 90px;
+/*-------------------------------------------------------*/
+/*panel table*/
+/*-------------------------------------------------------*/
+.panel table{
+    margin-top: 20px;
+    border-collapse: collapse;
 }
-/*-------------------------------------------------------*/
-/*tb-action. buttons*/
-/*-------------------------------------------------------*/
 
-.tb-action .deactivate{
-    width: 85px;
+.panel table, td, th {
+    padding: 3px;
+    text-align: left;
+}
+
+/*-------------------------------------------------------*/
+/*serviceTable.column.width*/
+/*-------------------------------------------------------*/
+#abonentTable {width: 450px;}
+
+/*-------------------------------------------------------*/
+/*serviceTable.column.width*/
+/*-------------------------------------------------------*/
+#serviceTable {width: 650px;}
+#serviceTable .col1{ width: 45%;}
+#serviceTable .col2{ width: 15%;}
+#serviceTable .col3{ width: 15%;}
+#serviceTable .col4{ width: 10%;}
+#serviceTable .col5{ width: 15%;}
+#serviceTable .tb-action{width: 90px;}
+#serviceTable .deactivate{width: 85px;}
+
+/*-------------------------------------------------------*/
+/*table-stl*/
+/*-------------------------------------------------------*/
+.table-stlT1{
+    border: 0;
+    border-bottom: 3px solid #3399ff;
+}
+
+.table-stlT1 th {
+    font-size: 13px;
+    font-weight: normal;
+    background: #f5fffa;
+    border-top: 4px solid #3399ff;
+    border-bottom: 4px solid #3399ff;
+    color: #039;
+    padding: 8px;
+}
+
+.table-stlT1 td {
+    background: #ffffff;
+    border-bottom: 1px solid #fff;
+    color: #669;
+    border-top: 1px solid transparent;
+    padding: 8px;
+}
+
+.table-stlT1 table, td, th {
+    border: 1px solid dimgrey;
+}
+.table-stlT1 tr:hover td {background: #ccddff;}
+
+/*-------------------------------------------------------*/
+/*table-stlT2 #ed1c40*/
+/*-------------------------------------------------------*/
+.table-stlT2{
+    text-align: left;
+    line-height: 30px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid #1E90FF;
+    width: 500px;
+    border-radius: .25rem;
+}
+
+.table-stlT2 thead tr:first-child {
+    background: #1E90FF;
+    color: #fff;
+    border: none;
+}
+
+.table-stlT2 th:first-child, td:first-child {
+    padding: 0 15px 0 20px;
+}
+
+.table-stlT2 thead tr:last-child th {
+    border-bottom: 3px solid #ddd;
+}
+
+.table-stlT2 tbody tr:hover {
+    background-color: rgba(237, 28, 64, .1);
+    cursor: default;
+}
+
+.table-stlT2 tbody tr:last-child td {
+    border: none;
+}
+
+.table-stlT2 tbody td {
+    border-bottom: 1px solid #ddd;
+}
+
+.table-stlT2 td:last-child {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.table-stlT2 .button {
+    color: #aaa;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.table-stlT2 .edit:hover {
+    color: #0a79df;
+}
+
+.table-stlT2 .delete:hover {
+    color: #0a79df;
 }

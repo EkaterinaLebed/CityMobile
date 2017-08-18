@@ -44,14 +44,14 @@
                     <button onclick="abonentAction.addService('INFO')">Add</button>
                 </div>
 
-                <table id="serviceTable">
+                <table class="table-stlT2" id="serviceTable">
                     <thead>
                         <tr>
-                            <th>Service</th>
-                            <th>Date activated</th>
-                            <th>Date deactivated</th>
-                            <th>Payment</th>
-                            <th></th>
+                            <th class="col1">Service</th>
+                            <th class="col2">Date <br>activated</th>
+                            <th class="col3">Date <br>deactivated</th>
+                            <th class="col4">Payment</th>
+                            <th class="col5"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,12 +63,12 @@
                             </c:when>
                             <c:otherwise>
                                 <c:forEach var="productItem" items="${customer.products}">
-                                    <tr>
+                                    <tr id="prod${productItem.id}">
                                         <td>${productItem.name}</td>
                                         <td>${productItem.dateActivated}</td>
-                                        <td>${productItem.dateDeactivated}</td>
+                                        <td class="date-deactive">${productItem.dateDeactivated}</td>
                                         <td>${productItem.product.payment}</td>
-                                        <td class='tb-action'><button class="deactivate" onclick="">deactivate</button></td>
+                                        <td class='tb-action'><button class="deactivate" onclick="abonentAction.deactivateService(${productItem.id})">deactivate</button></td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>
@@ -76,6 +76,7 @@
 
                     </tbody>
                 </table>
+
             </div>
         </div>
 

@@ -91,8 +91,59 @@ var abonentAction =(function(){
             "&serviceId=" + document.getElementById("serviceElem").value);
     };
 
-    module.deactivateService = function() {
+    module.activateService = function(productId) {
+        var elemClassButton="deactivate";
+        var elemClassDateDeactive="date-deactive";
+        var req = requestService.initRequest();
+        req.open("POST", "/citymobile/abonent/activate/service/do",true);
+        req.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var elemItem = document.getElementById("prod"+productId);
+                if(elemItem){
+                    var elemButton = elemItem.getElementsByClassName(elemClassButton)[0];
+                    var elemDateDeact = elemItem.getElementsByClassName(elemClassDateDeactive)[0];
+                    if(elemButton){
+                        elemButton.innerHTML="deactivate";
+                        elemButton.onclick = function(){
+                            abonentAction.deactivateService(productId)};
+                    }
+                    if(elemDateDeact){
+                        elemDateDeact.innerHTML="";
+                    }
+                }
+            }
+        };
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.send("id=" + productId);
+    };
 
+    module.deactivateService = function(productId) {
+        var elemClassButton="deactivate";
+        var elemClassDateDeactive="date-deactive";
+        var req = requestService.initRequest();
+        req.open("POST", "/citymobile/abonent/deactivate/service/do",true);
+        req.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var elemItem = document.getElementById("prod"+productId);
+                if(elemItem){
+                    var elemButton = elemItem.getElementsByClassName(elemClassButton)[0];
+                    var elemDateDeact = elemItem.getElementsByClassName(elemClassDateDeactive)[0];
+                    if(elemButton){
+                        elemButton.innerHTML="activate";
+                        elemButton.onclick = function(){
+                            abonentAction.activateService(productId)};
+                    }
+                    if(elemDateDeact){
+                        var now = new Date();
+                        var month = (1 + now.getMonth()).toString();
+                        month = month.length > 1 ? month : '0' + month;
+                        elemDateDeact.innerHTML = now.getDate()+"."+month+"."+now.getFullYear();
+                    }
+                }
+            }
+        };
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.send("id=" + productId);
     };
 
     module.find = function() {
@@ -151,23 +202,25 @@ var abonentAction =(function(){
             var actDate = product.getElementsByTagName("activated_date")[0];
             var deactDate = product.getElementsByTagName("deactivated_date")[0];
             var payment = product.getElementsByTagName("payment")[0];
-            var idValue = name.childNodes[0].nodeValue;
+            var idValue = id.childNodes[0].nodeValue;
 
             elemItem = document.createElement("tr");
+            elemItem.id = "prod"+idValue;
+
             if(PAGE_TYPE=="CREATE"){
                 elemItem.innerHTML =
-                    "<td prodId="+id+">"+name.childNodes[0].nodeValue+
+                    "<td>"+name.childNodes[0].nodeValue+
                     "</td><td>"+actDate.childNodes[0].nodeValue+
-                    "</td><td>"+deactDate.childNodes[0].nodeValue+
+                    "</td class='date-deactive'><td>"+deactDate.childNodes[0].nodeValue+
                     "</td><td>"+payment.childNodes[0].nodeValue+"</td>";
             }
             else if(PAGE_TYPE=="INFO"){
                 elemItem.innerHTML =
-                    "<td prodId="+idValue+">"+name.childNodes[0].nodeValue+
+                    "<td>"+name.childNodes[0].nodeValue+
                     "</td><td>"+actDate.childNodes[0].nodeValue+
-                    "</td><td>"+deactDate.childNodes[0].nodeValue+
+                    "</td class='date-deactive'><td>"+deactDate.childNodes[0].nodeValue+
                     "</td><td>"+payment.childNodes[0].nodeValue+"</td>"+
-                    "</td><td class='tb-action'><button class='deactivate' onclick=location.href='/citymobile/abonent/deactivate?id="+idValue+"'>deactivate</button></td>";
+                    "</td><td class='tb-action'><button class='deactivate' onclick='abonentAction.deactivateService("+idValue+")'>deactivate</button></td>";
             }
 
             tbody.appendChild(elemItem);

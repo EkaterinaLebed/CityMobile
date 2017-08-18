@@ -3,6 +3,7 @@ package com.lea.mobile.controller;
 import com.lea.mobile.entity.Customer;
 import com.lea.mobile.entity.CustomerProduct;
 import com.lea.mobile.entity.Product;
+import com.lea.mobile.service.CustomerProductService;
 import com.lea.mobile.service.CustomerService;
 import com.lea.mobile.service.ProductService;
 import org.apache.log4j.Logger;
@@ -28,6 +29,9 @@ public class CustomerController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    CustomerProductService customerProductService;
 
     @Autowired
     ProductService productService;
@@ -156,10 +160,12 @@ public class CustomerController {
         customerProduct.setCustomer(customer);
         customerProduct.setProduct(product);
         customerProduct.setDateActivated(new Date());
+        customerProduct.setActivated(true);
+
         try {
-            customerService.addProduct(customer,customerProduct);
+            customerProductService.create(customerProduct);
         } catch (Exception e) {
-            logger.error("Not successful: " + e.toString());
+            logger.error("FAILED: " + e.toString());
             return null;
         }
 
@@ -186,6 +192,42 @@ public class CustomerController {
         .append("</product></products>");
 
         return sb.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/activate/service/do", method = RequestMethod.POST,produces = "text/xml; charset=utf-8")
+    public ResponseEntity<Void> activateService(@RequestParam int id){
+        logger.debug("Invoked");
+
+        CustomerProduct customerProduct = customerProductService.selectById(id);
+        if(customerProduct==null) {
+            logger.error("Select NULL customer product, id=" + id);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        customerProduct.setActivated(true);
+        customerProduct.setDateDeactivated(null);
+
+        customerProductService.update(customerProduct);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/deactivate/service/do", method = RequestMethod.POST,produces = "text/xml; charset=utf-8")
+    public ResponseEntity<Void> deactivateService(@RequestParam int id){
+        logger.debug("Invoked");
+
+        CustomerProduct customerProduct = customerProductService.selectById(id);
+        if(customerProduct==null) {
+            logger.error("Select NULL customer product, id=" + id);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        customerProduct.setActivated(false);
+        customerProduct.setDateDeactivated(new Date());
+        customerProductService.update(customerProduct);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @ResponseBody
