@@ -259,6 +259,7 @@ footer li{
 /*-------------------------------------------------------*/
 .panel table{
     margin-top: 20px;
+    margin-bottom: 20px;
     border-collapse: collapse;
 }
 

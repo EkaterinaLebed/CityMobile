@@ -211,14 +211,14 @@ var abonentAction =(function(){
                 elemItem.innerHTML =
                     "<td>"+name.childNodes[0].nodeValue+
                     "</td><td>"+actDate.childNodes[0].nodeValue+
-                    "</td class='date-deactive'><td>"+deactDate.childNodes[0].nodeValue+
+                    "</td><td class='date-deactive'>"+deactDate.childNodes[0].nodeValue+
                     "</td><td>"+payment.childNodes[0].nodeValue+"</td>";
             }
             else if(PAGE_TYPE=="INFO"){
                 elemItem.innerHTML =
                     "<td>"+name.childNodes[0].nodeValue+
                     "</td><td>"+actDate.childNodes[0].nodeValue+
-                    "</td class='date-deactive'><td>"+deactDate.childNodes[0].nodeValue+
+                    "</td ><td class='date-deactive'>"+deactDate.childNodes[0].nodeValue+
                     "</td><td>"+payment.childNodes[0].nodeValue+"</td>"+
                     "</td><td class='tb-action'><button class='deactivate' onclick='abonentAction.deactivateService("+idValue+")'>deactivate</button></td>";
             }
