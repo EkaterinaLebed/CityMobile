@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>[abonentInfo]</title>
@@ -65,9 +65,9 @@
                                 <c:forEach var="productItem" items="${customer.products}">
                                     <tr id="prod${productItem.id}">
                                         <td>${productItem.name}</td>
-                                        <td>${productItem.dateActivated}</td>
-                                        <td class="date-deactive">${productItem.dateDeactivated}</td>
-                                        <td>${productItem.product.payment}</td>
+                                        <td><fmt:formatDate value='${productItem.dateActivated}' type='date' pattern='dd.MM.yyyy'/></td>
+                                        <td class="date-deactive"><fmt:formatDate value='${productItem.dateDeactivated}' type='date' pattern='dd.MM.yyyy'/></td>
+                                        <td><fmt:formatNumber value='${productItem.product.payment}' minFractionDigits='2' maxFractionDigits='2'/></td>
                                         <td class='tb-action'><button class="deactivate" onclick="abonentAction.deactivateService(${productItem.id})">deactivate</button></td>
                                     </tr>
                                 </c:forEach>
