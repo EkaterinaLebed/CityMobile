@@ -265,5 +265,5 @@ var abonentAction =(function(){
         }
     }
 
-        return module;
+    return module;
 })();
