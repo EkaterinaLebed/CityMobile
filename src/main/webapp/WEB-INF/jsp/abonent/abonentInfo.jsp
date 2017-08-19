@@ -67,7 +67,7 @@
                                         <td>${productItem.name}</td>
                                         <td><fmt:formatDate value='${productItem.dateActivated}' type='date' pattern='dd.MM.yyyy'/></td>
                                         <td class="date-deactive"><fmt:formatDate value='${productItem.dateDeactivated}' type='date' pattern='dd.MM.yyyy'/></td>
-                                        <td><fmt:formatNumber value='${productItem.product.payment}' minFractionDigits='2' maxFractionDigits='2'/></td>
+                                        <td><fmt:formatNumber value='${productItem.product.payment}' pattern='0.0' minFractionDigits='2' maxFractionDigits='2'/></td>
                                         <td class='tb-action'><button class="deactivate" onclick="abonentAction.deactivateService(${productItem.id})">deactivate</button></td>
                                     </tr>
                                 </c:forEach>
