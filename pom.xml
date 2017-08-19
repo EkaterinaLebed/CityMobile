@@ -106,6 +106,21 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--Websocket-->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-websocket</artifactId>
+            <version>8.5.20</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!--Servlet.JSP-->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
@@ -154,7 +169,8 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <server>tomcat7-localhost</server>
+                    <!--file: /usr/share/maven/conf/settings.xml-->
+                    <server>TomcatServer</server>
                     <url>http://localhost:8080/manager/text</url>
                     <path>/${app.name}</path>
                 </configuration>
