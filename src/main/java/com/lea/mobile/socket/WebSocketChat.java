@@ -35,7 +35,7 @@ public class WebSocketChat {
             String[] messageArray = message.split(":");
 
             if (messageArray[0].equals("reg")) {
-                users.put(messageArray[1], session);
+                users.put(messageArray[1].trim(), session);
                 if(logger.isDebugEnabled()){
                     logger.debug("New user: "+messageArray[1] + ": session.id = " + session.getId());
                 }
