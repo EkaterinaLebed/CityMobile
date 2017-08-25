@@ -17,7 +17,8 @@ public abstract class Customer_ {
 	public static volatile SingularAttribute<Customer, Integer> id;
 	public static volatile SingularAttribute<Customer, Date> activationDate;
 	public static volatile ListAttribute<Customer, CustomerContract> contracts;
-	public static volatile ListAttribute<Customer, Product> products;
+	public static volatile SingularAttribute<Customer, Boolean> activated;
+	public static volatile ListAttribute<Customer, CustomerProduct> products;
 
 }
 
