@@ -3,6 +3,7 @@ package com.lea.mobile.controller;
 import com.lea.mobile.entity.Customer;
 import com.lea.mobile.entity.CustomerProduct;
 import com.lea.mobile.entity.Product;
+import com.lea.mobile.entity.User;
 import com.lea.mobile.service.CustomerProductService;
 import com.lea.mobile.service.CustomerService;
 import com.lea.mobile.service.ProductService;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -64,8 +66,19 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/cabinet", method = RequestMethod.GET)
-    ModelAndView showCabinetPage(){
-        return new ModelAndView("/abonent/abonentCabinet");
+    ModelAndView showCabinetPage(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if(session!=null){
+            User user = (User)session.getAttribute("user");
+            if(user!=null){
+                ModelAndView model = new ModelAndView("/abonent/abonentCabinet");
+                model.addObject("customer",customerService.selectById(user.getCustomerId()));
+                model.addObject("serviceList",productService.selectAll());
+                return model;
+            }
+        }
+
+        return new ModelAndView();
     }
 
     @ResponseBody

@@ -70,6 +70,7 @@ var abonentAction =(function(){
 
     module.addService = function(PAGE_TYPE) {
         if(!document.customer){
+            console.log("Param 'customer' is empty");
             return;
         }
 
@@ -165,6 +166,10 @@ var abonentAction =(function(){
 
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         req.send(null);
+    };
+
+    module.makePayment = function(abonentId){
+        cosole.log("makePayment >> id=" + abonentId);
     };
 
     function clearTableServices(elemTable){

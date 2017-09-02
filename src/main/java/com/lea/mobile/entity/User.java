@@ -11,6 +11,9 @@ public class User {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "customerId", nullable = false)
+    private int customerId;
+
     @Column(name = "userName")
     private String userName;
 
@@ -50,5 +53,13 @@ public class User {
 
     public void setUserLogin(String userLogin) {
         this.userLogin = userLogin;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 }
