@@ -18,7 +18,9 @@ public class WebSocketChat {
     public void onOpen(Session session, EndpointConfig endpointConfig){
         try {
             logger.debug("Open connection");
-            session.getBasicRemote().sendText("server>> Connected!");
+            registerUser(session,"Support");
+            sendUserList(session);
+            sendMessage(session,"Support","Hello! Can I help you?");
         } catch (IOException e) {
             logger.error(e.toString());
         }
@@ -32,51 +34,35 @@ public class WebSocketChat {
     @OnMessage
     public void onMessage(String message, Session session) throws IOException {
         if (message != null && message.contains(":")) {
+
             String[] messageArray = message.split(":");
 
             if (messageArray[0].equals("reg")) {
-                users.put(messageArray[1].trim(), session);
-                if(logger.isDebugEnabled()){
-                    logger.debug("New user: "+messageArray[1] + ": session.id = " + session.getId());
-                }
+                registerUser(session,messageArray[1].trim());
+                return;
+            }else if (messageArray[0].equals("list")) {
+                sendUserList(session);
                 return;
             }
 
-            if (messageArray[0].equals("list")) {
-                String output = "list:";
-                for (String name : users.keySet()) {
-                    output += name + "\n";
-                }
-                session.getBasicRemote().sendText(output);
-                if(logger.isDebugEnabled()){
-                    logger.debug("Update user list for user sessionId="+session.getId());
-                }
-                return;
-            }
+            String nameFrom = messageArray.length>2?messageArray[2]:"";
 
-            String nameFrom = "";
-            for (Map.Entry<String, Session> entry : users.entrySet()) {
-                if (entry.getValue() == session) {
-                    nameFrom = entry.getKey();
-                    break;
+            if(!nameFrom.isEmpty()) {
+                if(!users.containsKey(nameFrom)){
+                    registerUser(session,nameFrom);
+                    sendUserList(session);
+                }
+
+                String nameTo = messageArray[0];
+                if(nameTo.isEmpty()) nameTo = "Support";
+
+                sendMessage(nameFrom, nameTo, messageArray[1]);
+                if(nameTo=="Support"){
+                    sendMessage(nameTo,nameFrom, "answer>>"+messageArray[1]);
                 }
             }
-
-            String nameTo = messageArray[0];
-            if (!nameFrom.isEmpty() && !nameTo.isEmpty()) {
-                String outputMessage = nameFrom + ":" + messageArray[1];
-                Session receiverSession = users.get(nameTo);
-
-                if(receiverSession!=null){
-                    receiverSession.getBasicRemote().sendText(outputMessage);
-                    if(logger.isDebugEnabled()){
-                        logger.debug("Sent message: receiver="+nameTo+"; sessionId="+receiverSession.getId()+";");
-                    }
-                }
-                else {
-                    logger.error("FAILED: Message does mot delivered: empty session, receiver="+nameTo);
-                }
-
+            else {
+                logger.error("Value 'nameFrom' is empty");
             }
         }
     }
@@ -84,5 +70,43 @@ public class WebSocketChat {
     @OnError
     public void onError(Throwable e) {
         logger.error(e.toString());
+    }
+
+
+    private void registerUser(Session session,String userName){
+        users.put(userName, session);
+        if(logger.isDebugEnabled()){
+            logger.debug("New user: " + userName + ": session.id = " + session.getId());
+        }
+    }
+
+    private void sendUserList(Session session) throws IOException {
+        String output = "list:";
+        for (String name : users.keySet()) {
+            output += name + "\n";
+        }
+        session.getBasicRemote().sendText(output);
+        if(logger.isDebugEnabled()){
+            logger.debug("Update user list for user sessionId="+session.getId());
+        }
+    }
+
+    private void sendMessage(Session session, String nameFrom,String message) throws IOException {
+        session.getBasicRemote().sendText(nameFrom+": "+message);
+    }
+
+    private void sendMessage(String nameFrom, String nameTo, String message) throws IOException {
+        Session receiverSession = users.get(nameTo);
+        String outputMessage = nameFrom + ": " + message;
+
+        if(receiverSession!=null){
+            receiverSession.getBasicRemote().sendText(outputMessage);
+            if(logger.isDebugEnabled()){
+                logger.debug("Sent message: receiver="+nameTo+"; sessionId="+receiverSession.getId()+";");
+            }
+        }
+        else {
+            logger.error("FAILED: Message does mot delivered: empty session, receiver="+nameTo);
+        }
     }
 }

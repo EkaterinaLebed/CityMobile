@@ -32,11 +32,18 @@ var chatActions = (function(){
     var module = {};
 
     module.send = function () {
-        sendMessageTo(document.getElementById("input").value);
+        sendMessageTo(":"+document.getElementById("input").value);
     };
 
     function sendMessageTo(message){
-        socket.send(message);
+        if(document.customer){
+            var msg = message+":"+document.customer.name;
+            socket.send(msg);
+            console.log(msg)
+        }
+        else{
+            console.log("sendMessageTo >> ERROR: customer is empty!")
+        }
     }
 
     function sendCmdUpdateUserList() {

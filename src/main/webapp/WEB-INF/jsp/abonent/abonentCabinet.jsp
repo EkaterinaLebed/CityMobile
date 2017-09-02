@@ -10,7 +10,7 @@
     <script type="text/javascript" src="<c:url value="/resources/script/main.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/script/abonentActions.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/script/chatActions.js"/>"></script>
-    <script type="text/javascript"> document.customer={id:${customer.id}};</script>
+    <script type="text/javascript"> document.customer={id:${customer.id}, name:'${customer.name}'};</script>
 </head>
 <body>
     <div id="container">
@@ -68,15 +68,16 @@
                     </tbody>
                 </table>
             </div>
+
+            <form class="tools">
+                <textarea id="activeusers"></textarea>
+                <textarea id="output"></textarea>
+                <div style="margin-top: 5px">
+                    <input type="text" id="input"/>
+                    <input type="button" onclick="chatActions.send()" name="Send" value="Send"/>
+                </div>
+            </form>
         </div>
-
     </div>
-
-    <form>
-        <textarea id="activeusers"></textarea>
-        <textarea id="output"></textarea>
-        <input type="text" id="input"/>
-        <input type="button" onclick="chatActions.send()" name="Send" value="Send"/>
-    </form>
 </body>
 </html>
