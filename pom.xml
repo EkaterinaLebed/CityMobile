@@ -22,6 +22,7 @@
         <spring.version>4.3.8.RELEASE</spring.version>
         <hibernate.version>5.2.10.Final</hibernate.version>
         <springframework.version>4.3.8.RELEASE</springframework.version>
+        <springsecurity.version>4.2.3.RELEASE</springsecurity.version>
         <log4j.version>1.2.17</log4j.version>
     </properties>
 
@@ -152,19 +153,19 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>4.2.3.RELEASE</version>
+            <version>${springsecurity.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>4.2.3.RELEASE</version>
+            <version>${springsecurity.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>4.2.3.RELEASE</version>
+            <version>${springsecurity.version}</version>
         </dependency>
     </dependencies>
 

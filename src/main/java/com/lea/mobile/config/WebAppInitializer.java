@@ -2,11 +2,11 @@ package com.lea.mobile.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class MyWebAppInitializer extends
+public class WebAppInitializer extends
         AbstractAnnotationConfigDispatcherServletInitializer{
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{DataConfig.class};
+        return new Class[]{DataConfig.class,WebSecurityConfig.class};
     }
 
     @Override

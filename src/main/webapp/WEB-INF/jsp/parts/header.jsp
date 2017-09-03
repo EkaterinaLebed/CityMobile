@@ -19,10 +19,10 @@
 
     <div class="header-menu">
         <c:choose>
-            <c:when test="${sessionScope.user != null}">
+            <c:when test="${pageContext.request.userPrincipal != null}">
                 <div class="welcome">
                     <a href="<c:url value="/manager/console"/>">
-                        WELCOME ${sessionScope.user.name}!
+                        WELCOME ${pageContext.request.userPrincipal.name}!
                     </a>
                 </div>
                 <div class="item">

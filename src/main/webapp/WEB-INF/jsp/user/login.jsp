@@ -12,7 +12,8 @@
         <jsp:include page="../parts/header.jsp"/>
 
         <div class="content">
-            <form class="login-form" method="post" action="<c:url value="/login/do"/>">
+            <c:url value="/login" var="loginUrl"/>
+            <form class="login-form" action="${loginUrl}" method="POST">
                 <div class="field">
                     <label for="id-login">login</label>
                     <input id="id-login" type="text" name="login">
@@ -23,9 +24,17 @@
                     <input id="id-pwd" type="password" name="pwd"/>
                 </div>
 
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
                 <div class="buttons">
                     <input class="submit-btn" type="submit" value="Login">
                 </div>
+                <c:if test="${param.error != null}">
+                    <p>Invalid username and password. </p>
+                </c:if>
+                <c:if test="${param.logout != null}">
+                    <p>You have been logged out.</p>
+                </c:if>
             </form>
         </div>
 
