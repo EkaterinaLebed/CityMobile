@@ -2,6 +2,7 @@ package com.lea.mobile.controller;
 
 import com.lea.mobile.entity.User;
 import com.lea.mobile.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 
 @Controller
+@SuppressWarnings("unused")
 public class RegisterController {
+    private static final Logger logger = Logger.getLogger(RegisterController.class);
+
     @Autowired
     UserService userService;
 
@@ -22,19 +24,22 @@ public class RegisterController {
         return new ModelAndView("user/register");
     }
 
+    @SuppressWarnings("SameReturnValue")
     @RequestMapping(value = "/register/do",method = RequestMethod.POST)
     public String doRegistration(HttpServletRequest request) {
-        HttpSession session = request.getSession(true);
+        String login = request.getParameter("login");
+        String pwd = request.getParameter("pwd");
 
-        if (session.getAttribute("user") == null) {
-            String login = request.getParameter("login");
-            if (userService.selectByLogin(login)==null){
-                User myUser = new User();
-                myUser.setName(request.getParameter("name"));
-                myUser.setUserLogin(request.getParameter("login"));
-                myUser.setPassword(request.getParameter("pwd").getBytes());
+        if (userService.selectByLogin(login)==null){
+            User myUser = new User();
+            myUser.setName(login);
+
+            try {
+                userService.makePassword(myUser,pwd);
+                userService.makeRole(myUser,"USER");
                 userService.create(myUser);
-                session.setAttribute("user", myUser);
+            } catch (Exception e) {
+                logger.error("ERROR: can't create user '"+myUser.getName()+"': "+e.toString());
             }
         }
 

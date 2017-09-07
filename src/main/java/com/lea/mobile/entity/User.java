@@ -1,27 +1,29 @@
 package com.lea.mobile.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table(name = "sps_users")
 @SuppressWarnings("unused")
 public class User {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "userid")
     private int id;
+
+    @Column(name = "username")
+    private String userName;
+
+    @Column(name = "password")
+    private String userPassword;
 
     @Column(name = "customerId", nullable = false)
     private int customerId;
 
-    @Column(name = "userName")
-    private String userName;
-
-    @Column(name = "userLogin")
-    private String userLogin;
-
-    @Column(name = "userPassword")
-    private byte[] userPassword;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "role")
+    private List<UserRole> roles = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -39,20 +41,12 @@ public class User {
         this.userName = userName;
     }
 
-    public byte[] getPassword() {
+    public String getPassword() {
         return userPassword;
     }
 
-    public void setPassword(byte[] userPassword) {
+    public void setPassword(String userPassword) {
         this.userPassword = userPassword;
-    }
-
-    public String getUserLogin() {
-        return userLogin;
-    }
-
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin;
     }
 
     public int getCustomerId() {
@@ -61,5 +55,13 @@ public class User {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
+    }
+
+    public List<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
     }
 }

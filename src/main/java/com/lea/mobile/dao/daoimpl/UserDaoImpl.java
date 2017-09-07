@@ -52,7 +52,7 @@ public class UserDaoImpl implements UserDao{
         Root<User> root = criteria.from(User.class);
         criteria.select(root);
 
-        criteria.where(builder.equal(root.get(User_.userLogin),login));
+        criteria.where(builder.equal(root.get(User_.userName),login));
         User user = null;
 
         try {

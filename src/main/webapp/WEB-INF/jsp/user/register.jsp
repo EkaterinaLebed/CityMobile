@@ -14,13 +14,8 @@
         <div class="content">
             <form class="login-form" method="post" action="<c:url value="/register/do"/>">
                 <div class="field">
-                    <label for="id-name">name</label>
-                    <input id="id-name" type="text" name="name">
-                </div>
-
-                <div class="field">
-                    <label for="id-login">login</label>
-                    <input id="id-login" type="text" name="login">
+                    <label for="id-name">login</label>
+                    <input id="id-name" type="text" name="login">
                 </div>
 
                 <div class="field">
@@ -31,6 +26,7 @@
                 <div class="buttons">
                     <input class="submit-btn" type="submit" value="Register">
                 </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
         </div>
 
