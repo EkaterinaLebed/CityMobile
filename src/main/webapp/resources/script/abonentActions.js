@@ -3,6 +3,9 @@ var abonentAction =(function(){
     var module = {};
 
     module.add = function() {
+        var csrfToken = document.head.querySelector("meta[name='_csrf']").content;
+        var csrfHeader = document.head.querySelector("meta[name='_csrf_header']").content;
+
         var req = requestService.initRequest();
         req.open("POST", "/citymobile/abonent/create/do", true);
         req.onreadystatechange = function() {
@@ -30,6 +33,7 @@ var abonentAction =(function(){
             elem.setAttribute("class","");
         };
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.setRequestHeader(csrfHeader, csrfToken);
         req.send("name=" + document.getElementById("id-name").value +
             "&address=" + document.getElementById("id-address").value);
     };
@@ -74,6 +78,9 @@ var abonentAction =(function(){
             return;
         }
 
+        var csrfToken = document.head.querySelector("meta[name='_csrf']").content;
+        var csrfHeader = document.head.querySelector("meta[name='_csrf_header']").content;
+
         var req = requestService.initRequest();
         req.open("POST", "/citymobile/abonent/add/service/do", true);
         req.onreadystatechange = function() {
@@ -88,6 +95,7 @@ var abonentAction =(function(){
             }
         };
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.setRequestHeader(csrfHeader, csrfToken);
         req.send("abonentId=" + document.customer.id +
             "&serviceId=" + document.getElementById("serviceElem").value);
     };
