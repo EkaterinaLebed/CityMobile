@@ -98,7 +98,7 @@
                                     <tr id="billFile${billItem.id}">
                                         <td>Bill_${billItem.id}.pdf</td>
                                         <td><fmt:formatDate value='${billItem.startDate}' type='date' pattern='dd.MM.yyyy'/></td>
-                                        <td class='tb-action'><button class="deactivate" onclick="abonentAction.test(${billItem.id})">download</button></td>
+                                        <td class='tb-action'><button class="download" onclick="abonentAction.test(${billItem.id})">download</button></td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>
