@@ -29,11 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/" ).permitAll()
-            .antMatchers("/protected/**")
-            .access("hasRole('ROLE_ADMIN')")
-            .antMatchers("/confidential/**")
-            .access("hasRole('ROLE_SUPERADMIN')")
+            .antMatchers("/","/home").permitAll()
+            .antMatchers("/protected/**").access("hasRole('ROLE_ADMIN')")
+            .antMatchers("/confidential/**").access("hasRole('ROLE_SUPERADMIN')")
         .and().formLogin().permitAll()
             .loginPage("/user/login")
             .usernameParameter("login")
