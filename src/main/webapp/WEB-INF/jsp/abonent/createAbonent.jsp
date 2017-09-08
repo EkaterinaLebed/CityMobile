@@ -10,7 +10,6 @@
     <script type="text/javascript" src="<c:url value="/resources/script/abonentActions.js"/>"></script>
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
-    <meta name="_csrf_param" content="${_csrf.parameterName}"/>
 </head>
 <body>
     <div id="container">
