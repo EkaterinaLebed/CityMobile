@@ -3,9 +3,6 @@ var abonentAction =(function(){
     var module = {};
 
     module.add = function() {
-        var csrfToken = document.head.querySelector("meta[name='_csrf']").content;
-        var csrfHeader = document.head.querySelector("meta[name='_csrf_header']").content;
-
         var req = requestService.initRequest();
         req.open("POST", "/citymobile/abonent/create/do", true);
         req.onreadystatechange = function() {
@@ -33,7 +30,7 @@ var abonentAction =(function(){
             elem.setAttribute("class","");
         };
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        req.setRequestHeader(csrfHeader, csrfToken);
+        req.setRequestHeader(csrfHeader(), csrfToken());
         req.send("name=" + document.getElementById("id-name").value +
             "&address=" + document.getElementById("id-address").value);
     };
@@ -78,9 +75,6 @@ var abonentAction =(function(){
             return;
         }
 
-        var csrfToken = document.head.querySelector("meta[name='_csrf']").content;
-        var csrfHeader = document.head.querySelector("meta[name='_csrf_header']").content;
-
         var req = requestService.initRequest();
         req.open("POST", "/citymobile/abonent/add/service/do", true);
         req.onreadystatechange = function() {
@@ -95,7 +89,7 @@ var abonentAction =(function(){
             }
         };
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        req.setRequestHeader(csrfHeader, csrfToken);
+        req.setRequestHeader(csrfHeader(), csrfToken());
         req.send("abonentId=" + document.customer.id +
             "&serviceId=" + document.getElementById("serviceElem").value);
     };
@@ -103,6 +97,7 @@ var abonentAction =(function(){
     module.activateService = function(productId) {
         var elemClassButton="deactivate";
         var elemClassDateDeactive="date-deactive";
+        var param = "id=" + productId;
         var req = requestService.initRequest();
         req.open("POST", "/citymobile/abonent/activate/service/do",true);
         req.onreadystatechange = function() {
@@ -123,12 +118,14 @@ var abonentAction =(function(){
             }
         };
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        req.send("id=" + productId);
+        req.setRequestHeader(csrfHeader(),csrfToken());
+        req.send(param);
     };
 
     module.deactivateService = function(productId) {
         var elemClassButton="deactivate";
         var elemClassDateDeactive="date-deactive";
+        var param = "id=" + productId;
         var req = requestService.initRequest();
         req.open("POST", "/citymobile/abonent/deactivate/service/do",true);
         req.onreadystatechange = function() {
@@ -152,7 +149,8 @@ var abonentAction =(function(){
             }
         };
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        req.send("id=" + productId);
+        req.setRequestHeader(csrfHeader(),csrfToken());
+        req.send(param);
     };
 
     module.find = function() {
@@ -276,6 +274,14 @@ var abonentAction =(function(){
                 tbody.removeChild(tbody.childNodes[loop]);
             }
         }
+    }
+
+    function csrfHeader(){
+        return document.head.querySelector("meta[name='_csrf_header']").content;
+    }
+
+    function csrfToken(){
+        return document.head.querySelector("meta[name='_csrf']").content;
     }
 
     return module;

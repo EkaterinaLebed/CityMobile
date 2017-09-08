@@ -10,6 +10,8 @@
     <script type="text/javascript" src="<c:url value="/resources/script/main.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/script/abonentActions.js"/>"></script>
     <script type="text/javascript"> document.customer={id:${customer.id}};</script>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
     <div id="container">
