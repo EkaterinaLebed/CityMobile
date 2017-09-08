@@ -301,9 +301,9 @@ footer li{
 #serviceTable .deactivate{width: 85px;}
 
 #billsTable {width: 650px;}
-#billsTable .col1{ width: 40%;}
+#billsTable .col1{ width: 45%;}
 #billsTable .col2{ width: 40%;}
-#billsTable .col3{ width: 20%;}
+#billsTable .col3{ width: 15%;}
 #billsTable .tb-action{width: 90px; padding-right: 30px}
 #billsTable .download{width: 85px;}
 /*-------------------------------------------------------*/
