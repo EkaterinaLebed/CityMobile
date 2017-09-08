@@ -44,6 +44,9 @@ public class Customer {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "customer")
     List <CustomerContract> contracts = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "customer")
+    List <Bill> bills = new ArrayList<>();
+
     public int getId() {
         return id;
     }
@@ -106,6 +109,14 @@ public class Customer {
 
     public void setContracts(List<CustomerContract> contracts) {
         this.contracts = contracts;
+    }
+
+    public List<Bill> getBills() {
+        return bills;
+    }
+
+    public void setBills(List<Bill> bills) {
+        this.bills = bills;
     }
 
     public boolean isActivated() {

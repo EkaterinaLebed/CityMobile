@@ -78,6 +78,34 @@
                     </tbody>
                 </table>
 
+                <table class="table-stlT2" id="billsTable">
+                    <thead>
+                        <tr>
+                            <th class="col1">File name</th>
+                            <th class="col2">Bill date</th>
+                            <th class="col3"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:choose>
+                            <c:when test="${empty customer.bills}">
+                                <tr id="billsTableLineNull">
+                                    <td>#</td><td></td><td></td>
+                                </tr>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="billItem" items="${customer.bills}">
+                                    <tr id="billFile${billItem.id}">
+                                        <td>Bill_${billItem.id}.pdf</td>
+                                        <td><fmt:formatDate value='${billItem.startDate}' type='date' pattern='dd.MM.yyyy'/></td>
+                                        <td class='tb-action'><button class="deactivate" onclick="abonentAction.test(${billItem.id})">download</button></td>
+                                    </tr>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
+                    </tbody>
+                </table>
+
             </div>
         </div>
 
