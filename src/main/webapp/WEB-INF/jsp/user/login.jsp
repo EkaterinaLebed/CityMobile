@@ -6,6 +6,7 @@
 <head>
     <title>[login]</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>"/>
+    <script type="text/javascript" src="<c:url value="/resources/script/main.js"/>"></script>
 </head>
 <body>
     <div id="container">
