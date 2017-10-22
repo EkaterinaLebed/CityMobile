@@ -262,7 +262,7 @@ var abonentAction =(function(){
 
             elemItem = document.createElement("tr");
             elemItem.innerHTML = "<td>" +nameValue +
-                "</td><td class='tb-action'><button onclick=location.href='/citymobile/abonent/info?id="+idValue+"'>Show</button></td>";
+                "</td><td class='tb-action'><button onclick=location.href='/abonent/info?id="+idValue+"'>Show</button></td>";
             tbody.appendChild(elemItem);
         }
     }

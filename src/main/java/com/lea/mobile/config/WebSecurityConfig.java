@@ -37,7 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .usernameParameter("login")
             .passwordParameter("pwd")
             .loginProcessingUrl("/login")
-            .defaultSuccessUrl("/", false);
+            .defaultSuccessUrl("/manager/console", false)
+        .and().logout().logoutSuccessUrl("/");
     }
 
     @Bean(name="passwordEncoder")
