@@ -4,7 +4,7 @@ var abonentAction =(function(){
 
     module.add = function() {
         var req = requestService.initRequest();
-        req.open("POST", "/citymobile/abonent/create/do", true);
+        req.open("POST", "/abonent/create/do", true);
         req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 if(this.responseXML){
@@ -37,7 +37,7 @@ var abonentAction =(function(){
 
     module.activate = function(abonentId){
         var req = requestService.initRequest();
-        req.open("GET", "/citymobile/abonent/activate?id="+abonentId, true);
+        req.open("GET", "/abonent/activate?id="+abonentId, true);
         req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var btnActivate = document.getElementById("btnActivateSwitch");
@@ -54,7 +54,7 @@ var abonentAction =(function(){
 
     module.deactivate = function(abonentId){
         var req = requestService.initRequest();
-        req.open("GET", "/citymobile/abonent/deactivate?id="+abonentId, true);
+        req.open("GET", "/abonent/deactivate?id="+abonentId, true);
         req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var btnActivate = document.getElementById("btnActivateSwitch");
@@ -76,7 +76,7 @@ var abonentAction =(function(){
         }
 
         var req = requestService.initRequest();
-        req.open("POST", "/citymobile/abonent/add/service/do", true);
+        req.open("POST", "/abonent/add/service/do", true);
         req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 if(this.responseXML){
@@ -99,7 +99,7 @@ var abonentAction =(function(){
         var elemClassDateDeactive="date-deactive";
         var param = "id=" + productId;
         var req = requestService.initRequest();
-        req.open("POST", "/citymobile/abonent/activate/service/do",true);
+        req.open("POST", "/abonent/activate/service/do",true);
         req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var elemItem = document.getElementById("prod"+productId);
@@ -127,7 +127,7 @@ var abonentAction =(function(){
         var elemClassDateDeactive="date-deactive";
         var param = "id=" + productId;
         var req = requestService.initRequest();
-        req.open("POST", "/citymobile/abonent/deactivate/service/do",true);
+        req.open("POST", "/abonent/deactivate/service/do",true);
         req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var elemItem = document.getElementById("prod"+productId);
@@ -156,7 +156,7 @@ var abonentAction =(function(){
     module.find = function() {
         var ptext = document.getElementById("id-name").value;
         var req = requestService.initRequest();
-        req.open("GET", "/citymobile/abonent/search?text="+ptext, true);
+        req.open("GET", "/abonent/search?text="+ptext, true);
         req.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.responseXML) {

@@ -34,7 +34,7 @@ var search =(function(){
 
     module.doCompletion = function(text) {
         var req = requestService.initRequest();
-        req.open("GET", "/citymobile/product/search?text="+text, true);
+        req.open("GET", "/product/search?text="+text, true);
         req.onreadystatechange = function(){
             var completeTable = document.getElementById("complete-table");
             clearTable(completeTable);

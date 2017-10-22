@@ -22,7 +22,7 @@ public class User {
     @Column(name = "customerId", nullable = false)
     private int customerId;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "role")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "role")
     private List<UserRole> roles = new ArrayList<>();
 
     public int getId() {
