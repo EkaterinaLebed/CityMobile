@@ -113,3 +113,15 @@ var search =(function(){
 
     return module;
 })();
+
+var config = (function () {
+
+    var module = {};
+
+    module.serverHost = function () {
+        //serverHost: ""
+        return "http://localhost:8080/citymobile/";
+    };
+
+    return module;
+}());
